@@ -1,19 +1,40 @@
 import io
 import sys
+from collections import defaultdict
 
 _INPUT = """\
-ch@ku@ai
-choku@@i
+ch@kud@i
+akidu@ho
 """
 sys.stdin = io.StringIO(_INPUT)
 
-S = list(input())
-T = list(input())
-S2 = S.copy()
-T2 = T.copy()
+S = input()
+T = input()
+Scnt = defaultdict(int)
+Tcnt = defaultdict(int)
+for c in S:
+    Scnt[c] += 1
+for c in T:
+    Tcnt[c] += 1
 
-for i in range(len(S)):
-    for j in range(len(T)):
-        if S[i] == T[j]:
-            print("i=" + str(i))
-            print("j=" + str(j))
+print(Scnt)
+print(Tcnt)
+
+for c in "atcoder":
+    M = max(Scnt[c], Tcnt[c])
+    if Scnt['@'] < M-Scnt[c] or Tcnt['@'] < M-Tcnt[c]:
+        print("No")
+        exit()
+
+    # print("M=" + str(M))
+    # print(Scnt[c])
+    # print(Tcnt[c])
+
+    Scnt['@'] -= M-Scnt[c]
+    Scnt[c] = M
+    Tcnt['@'] -= M-Tcnt[c]
+    Tcnt[c] = M
+
+print(Scnt)
+print(Tcnt)
+print("Yes" if Scnt == Tcnt else "No")
