@@ -3,8 +3,8 @@ import sys
 from collections import defaultdict
 
 _INPUT = """\
-ch@kud@i
-akidu@ho
+h@n@@k@@
+hanaokaa
 """
 sys.stdin = io.StringIO(_INPUT)
 
@@ -17,8 +17,8 @@ for c in S:
 for c in T:
     Tcnt[c] += 1
 
-print(Scnt)
-print(Tcnt)
+# print(Scnt)
+# print(Tcnt)
 
 for c in "atcoder":
     M = max(Scnt[c], Tcnt[c])
@@ -26,6 +26,7 @@ for c in "atcoder":
         print("No")
         exit()
 
+    # print("char=" + str(c))
     # print("M=" + str(M))
     # print(Scnt[c])
     # print(Tcnt[c])
@@ -35,6 +36,6 @@ for c in "atcoder":
     Tcnt['@'] -= M-Tcnt[c]
     Tcnt[c] = M
 
-print(Scnt)
-print(Tcnt)
+# print(Scnt)
+# print(Tcnt)
 print("Yes" if Scnt == Tcnt else "No")
