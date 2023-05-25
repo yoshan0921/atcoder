@@ -22,5 +22,21 @@ def get_prime(n):
     return prime + data       # 素数リストと奇数のリストを合わせて返す
 
 
+def get_prime_v2(limit):
+    prime = []
+    for i in range(2, limit):
+        print(int(limit**0.5)+1)
+        print("i=" + str(i))
+        # for j in range(2, int(limit**0.5)+1):
+        for j in range(2, i):
+            print("j=" + str(j))
+            if i % j == 0:
+                break
+        else:
+            prime.append(i)
+    return prime
+
+
 if __name__ == "__main__":
-    print(get_prime(100))         # 100までの素数を求める
+    # print(get_prime(100))         # 100までの素数を求める
+    print(get_prime_v2(10))         # 100までの素数を求める
