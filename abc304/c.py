@@ -33,7 +33,7 @@ while not q.empty():
     idx = q.get()
     # print("idx=" + str(idx))
     # print(q.queue)
-    for i in range(1, N):
+    for i in range(N):
         if ans[i] == "Yes":
             continue
 
