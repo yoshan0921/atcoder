@@ -1,7 +1,7 @@
 import io
+import queue
 import sys
 import math
-import numpy
 
 _INPUT = """\
 9 4
@@ -18,29 +18,33 @@ _INPUT = """\
 sys.stdin = io.StringIO(_INPUT)
 
 N, D = map(int, (input().split()))
-print(N, D)
+# print(N, D)
 coordinate = [list(map(int, input().split())) for _ in range(N)]
 # print(coordinate)
 
-ret = ["No"] * N
-ret[0] = "Yes"
-print(ret)
+ans = ["No"] * N
+ans[0] = "Yes"
+# print(ans)
 
-# 各人から距離がD以内の人を整理する。
-personWithinD = []
-
-for i in range(len(coordinate)):
-    temp_list = []
-    for j in range(len(coordinate)):
-        if i == j:
+q = queue.Queue()
+q.put(0)
+distance = 0
+while not q.empty():
+    idx = q.get()
+    # print("idx=" + str(idx))
+    # print(q.queue)
+    for i in range(1, N):
+        if ans[i] == "Yes":
             continue
-        a = numpy.array(coordinate[i])
-        b = numpy.array(coordinate[j])
-        distance = numpy.linalg.norm(b-a)
-        # print(distance)
-        if distance <= D:
-            temp_list.append(j)
-    else:
-        personWithinD.append(temp_list)
 
-print(personWithinD)
+        dx = coordinate[idx][0]-coordinate[i][0]
+        dy = coordinate[idx][1]-coordinate[i][1]
+        distance = dx*dx+dy*dy
+        # print("distance=" + str(distance))
+
+        if distance <= D*D:
+            ans[i] = "Yes"
+            q.put(i)
+
+for j in ans:
+    print(j)
