@@ -146,6 +146,18 @@ class UnionFind():
 if __name__ == "__main__":
     n = 5
     uf = UnionFind(n)
-    uf.unite(1, 2)
-
     print(uf.group_members())
+
+    uf.unite(1, 2)
+    print(uf.group_members())
+
+    uf.unite(3, 2)
+    print(uf.group_members())
+
+    uf.unite(4, 0)
+    print(uf.group_members())
+
+    uf.unite(0, 3)
+    print(uf.group_members())
+
+    print(uf.find(3))
