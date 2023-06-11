@@ -1,5 +1,6 @@
 # Atcoder ABC284-C Count Connected Components
 # https://atcoder.jp/contests/abc284/tasks/abc284_c
+#
 # DFSを使った解答例
 
 import io

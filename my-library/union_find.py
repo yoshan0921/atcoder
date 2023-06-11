@@ -2,145 +2,54 @@ from collections import defaultdict
 
 
 class UnionFind():
-    """
-    Union Find木クラス
-
-    Attributes
-    --------------------
-    n : int
-        要素数
-    root : list
-        木の要素数
-        0未満であればそのノードが根であり、添字の値が要素数
-    rank : list
-        木の深さ
-    """
-
     def __init__(self, n):
-        """
-        Parameters
-        ---------------------
-        n : int
-            要素数
-        """
         self.n = n
-        self.root = [-1]*(n+1)
-        self.rank = [0]*(n+1)
+        self.parents = [-1] * n
 
     def find(self, x):
-        """
-        ノードxの根を見つける
-
-        Parameters
-        ---------------------
-        x : int
-            見つけるノード
-
-        Returns
-        ---------------------
-        root : int
-            根のノード
-        """
-        if (self.root[x] < 0):
+        if self.parents[x] < 0:
             return x
         else:
-            self.root[x] = self.find(self.root[x])
-            return self.root[x]
+            self.parents[x] = self.find(self.parents[x])
+            return self.parents[x]
 
     def unite(self, x, y):
-        """
-        木の併合
-
-        Parameters
-        ---------------------
-        x : int
-            併合したノード
-        y : int
-            併合したノード
-        """
         x = self.find(x)
         y = self.find(y)
 
-        if (x == y):
+        if x == y:
             return
-        elif (self.rank[x] > self.rank[y]):
-            self.root[x] += self.root[y]
-            self.root[y] = x
-        else:
-            self.root[y] += self.root[x]
-            self.root[x] = y
-            if (self.rank[x] == self.rank[y]):
-                self.rank[y] += 1
 
-    def same(self, x, y):
-        """
-        同じグループに属するか判定
+        if self.parents[x] > self.parents[y]:
+            x, y = y, x
 
-        Parameters
-        ---------------------
-        x : int
-            判定したノード
-        y : int
-            判定したノード
-
-        Returns
-        ---------------------
-        ans : bool
-            同じグループに属しているか
-        """
-        return self.find(x) == self.find(y)
+        self.parents[x] += self.parents[y]
+        self.parents[y] = x
 
     def size(self, x):
-        """
-        木のサイズを計算
+        return -self.parents[self.find(x)]
 
-        Parameters
-        ---------------------
-        x : int
-            計算したい木のノード
+    def same(self, x, y):
+        return self.find(x) == self.find(y)
 
-        Returns
-        ---------------------
-        size : int
-            木のサイズ
-        """
-        return -self.root[self.find(x)]
+    def members(self, x):
+        root = self.find(x)
+        return [i for i in range(self.n) if self.find(i) == root]
 
     def roots(self):
-        """
-        根のノードを取得
+        return [i for i, x in enumerate(self.parents) if x < 0]
 
-        Returns
-        ---------------------
-        roots : list
-            根のノード
-        """
-        return [i for i, x in enumerate(self.root) if x < 0]
-
-    def group_size(self):
-        """
-        グループ数を取得
-
-        Returns
-        ---------------------
-        size : int
-            グループ数
-        """
+    def group_count(self):
         return len(self.roots())
 
-    def group_members(self):
-        """
-        全てのグループごとのノードを取得
-
-        Returns
-        ---------------------
-        group_members : defaultdict
-            根をキーとしたノードのリスト
-        """
+    def all_group_members(self):
         group_members = defaultdict(list)
         for member in range(self.n):
             group_members[self.find(member)].append(member)
         return group_members
+
+    def __str__(self):
+        return '\n'.join(f'{r}: {m}' for r, m in self.all_group_members().items())
 
 
 if __name__ == "__main__":
@@ -149,5 +58,5 @@ if __name__ == "__main__":
     uf.unite(1, 2)
     uf.unite(2, 3)
     uf.unite(0, 4)
-    print(uf.group_size())
-    print(uf.group_members().values())
+    print(uf.group_count())
+    print(uf.all_group_members())
