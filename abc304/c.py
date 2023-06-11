@@ -1,3 +1,8 @@
+# Atcoder ABC304-C Virus
+# https://atcoder.jp/contests/abc304/tasks/abc304_c
+#
+# BFSを使った解答例
+
 import io
 import queue
 import sys
@@ -18,32 +23,38 @@ _INPUT = """\
 sys.stdin = io.StringIO(_INPUT)
 
 N, D = map(int, (input().split()))
-# print(N, D)
-coordinate = [list(map(int, input().split())) for _ in range(N)]
-# print(coordinate)
 
+# 各人の座標情報を読み込む
+coordinate = [list(map(int, input().split())) for _ in range(N)]
+
+# 各人の感染チェック結果
 ans = ["No"] * N
+# 人1は最初の感染者であるためYesとする。
 ans[0] = "Yes"
-# print(ans)
 
 q = queue.Queue()
+
+# 最初の感染者である人1をキューに入れる。
 q.put(0)
 distance = 0
 while not q.empty():
     idx = q.get()
-    # print("idx=" + str(idx))
-    # print(q.queue)
+
+    # キューから取り出した感染者idxを起点として、距離D以内に人がいないかチェックする。
     for i in range(N):
+        # 人iが既に感染者であればスキップする。
         if ans[i] == "Yes":
             continue
 
+        # 2点間の距離を計算
         dx = coordinate[idx][0]-coordinate[i][0]
         dy = coordinate[idx][1]-coordinate[i][1]
         distance = dx*dx+dy*dy
-        # print("distance=" + str(distance))
 
+        # 2点間の距離がD以下である場合、人iを感染者とする。
         if distance <= D*D:
             ans[i] = "Yes"
+            # 感染者iをキューに入れる。
             q.put(i)
 
 for j in ans:
