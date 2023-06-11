@@ -1,5 +1,6 @@
 # Atcoder ABC287-C Path Graph?
 # https://atcoder.jp/contests/abc287/tasks/abc287_c
+#
 # Union Findを使った解答例
 
 from collections import defaultdict
