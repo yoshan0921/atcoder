@@ -1,4 +1,5 @@
 # Atcoder ABC288-C Don’t be cycle
+# https://atcoder.jp/contests/abc288/tasks/abc288_c
 # Union Findを使った解答例
 
 from collections import defaultdict
