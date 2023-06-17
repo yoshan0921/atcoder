@@ -90,3 +90,13 @@ list1 = [0, 1, 2]
 list2 = [3, 4, 5]
 result = [*list1, *list2]
 print(result)
+
+# dictの初期化
+# <list> or <dict> = [<式> for <変数> in <反復可能オブジェクト>]
+dict = {key+1: 0 for key in range(5)}
+print(dict)
+
+# dictのソート
+# ソート後はタプルになる。
+ans = sorted(dict.items(), key=lambda i: i[1])
+print(ans)

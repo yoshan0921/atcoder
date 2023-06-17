@@ -1,30 +1,10 @@
-# Webサイトのスクレイピングを行う
-# 1. ライブラリのインポート
-
-import requests
 from bs4 import BeautifulSoup
+import requests
 
-# 2. WebサイトのURLを指定
-
-url = "https://www.ymori.com/books/python2nen/test2.html"
-
-# 3. Webサイトからデータを取得
-
-r = requests.get(url)
-soup = BeautifulSoup(r.content, "html.parser")
-
-# 4. データを解析
-
-elems = soup.find_all("li")
-
-# 5. データを保存
-
-for e in elems:
-
-    print(e.getText())
-
-# 6. データを表示
-
-for e in elems:
-
-    print(e.getText())
+# TIS.incのWebサイトからスクレイピングを使ってニュース一覧を取得し表示する。
+url = 'https://www.tis.co.jp/news/'
+response = requests.get(url)
+soup = BeautifulSoup(response.text, 'html.parser')
+news_list = soup.find_all('a', class_='infoList')
+for news in news_list:
+    print(news)
