@@ -1,3 +1,8 @@
+# Atcoder ABC306-D Poisonous Full-Course
+# https://atcoder.jp/contests/abc306/tasks/abc306_d
+#
+# 動的計画法
+
 import io
 import sys
 
@@ -39,11 +44,11 @@ for i in range(N):
     dp[i+1][1] = max(dp[i+1][1], dp[i][1])
 
     # 料理を食べる場合
-    # 解毒剤入り
+    # 解毒剤入り料理
     if X[i][0] == 0:
         dp[i+1][0] = max(dp[i+1][0], dp[i][0] + X[i][1])
         dp[i+1][0] = max(dp[i+1][0], dp[i][1] + X[i][1])
-    # 毒入り
+    # 毒入り料理
     else:
         dp[i+1][1] = max(dp[i+1][1], dp[i][0] + X[i][1])
 
