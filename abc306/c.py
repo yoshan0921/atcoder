@@ -9,7 +9,9 @@ sys.stdin = io.StringIO(_INPUT)
 
 N = int(input())
 A = list(map(int, input().split()))
+# 各数字の出たきた位置を記録する
 p_list = {key+1: 0 for key in range(N)}
+# 各数字の出たきた回数を記録する
 c_list = {key+1: 0 for key in range(N)}
 
 for i in range(len(A)):
