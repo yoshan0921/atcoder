@@ -3,6 +3,7 @@
 #
 # 動的計画法
 
+# TLEが1件発生して通らない。
 
 import io
 import sys
@@ -27,10 +28,10 @@ for _ in range(N):
         # 今まで見た硬貨で作れる金額の場合
         if dp[i]:
             for j in range(b+1):
-
                 if i+a*j <= X:
                     nx[i+a*j] = True
     dp = nx
+
 if dp[-1]:
     print('Yes')
 else:
