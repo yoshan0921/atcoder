@@ -17,6 +17,8 @@ ret3 = bisect.bisect_right(a3, 4)
 print(ret3)
 
 # キュー
+# queueはスレッドセーフだが、dequeはスレッドセーフではない。
+# ただし、dequeの方が処理は高速。
 dque = collections.deque([0, 1, 2, 3])
 dque.append(4)
 print(dque)

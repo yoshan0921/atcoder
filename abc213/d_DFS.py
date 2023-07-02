@@ -1,4 +1,8 @@
-# 再帰回数上限。再帰関数を使うときは必ず最初に書くこと
+# Atcoder ABC213-D Takahashi Tour
+# https://atcoder.jp/contests/abc213/tasks/abc213_d
+#
+# DFSを使った解答例
+
 import io
 import sys
 import math
@@ -11,16 +15,14 @@ _INPUT = """\
 """
 sys.stdin = io.StringIO(_INPUT)
 
+# 再帰回数上限。再帰関数を使うときは必ず最初に書くこと
 sys.setrecursionlimit(10**6)
 
 # 入力の受け取り
 N = int(input())
 
-# 道の情報格納リスト
+# 道情報を無向グラフとして作成する。
 connect = [[] for i in range(N+1)]
-# print(connect)
-
-# 道の情報受け取り
 for i in range(N-1):
     A, B = map(int, input().split())
     connect[A].append(B)
