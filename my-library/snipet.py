@@ -102,3 +102,9 @@ print(dict)
 # ソート後はタプルになる。
 ans = sorted(dict.items(), key=lambda i: i[1])
 print(ans)
+
+# defaultdictの初期化
+# <list> or <dict> = collections.defaultdict(<型>)
+dict = collections.defaultdict(list)
+print(dict)
+print(type(dict))
