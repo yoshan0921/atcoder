@@ -58,10 +58,10 @@ while q:
         while True:
             tmp_y += yy
             tmp_x += xx
-            # 氷だったらsenndをTrueにして次へ
+            # 氷だったらtouchをTrueにして次へ
             if S[tmp_y][tmp_x] == ".":
                 touch[tmp_y][tmp_x] = True
-            # 岩だったらマスのキューに追加してbreak
+            # 岩だったらキューに追加してbreak
             elif S[tmp_y][tmp_x] == "#":
                 if checked[tmp_y - yy][tmp_x - xx] == False:
                     q.append((tmp_y - yy, tmp_x - xx))
