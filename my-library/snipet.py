@@ -45,7 +45,9 @@ print(ret6[0][0])
 # ソート
 a7 = [[1, 2], [5, 7], [2, 6], [4, 5], [3, 6]]
 a7.sort()
-print(a7)
+print(a7)å
+
+ans = sorted(a7, key=lambda i: (i[1], -i[0]), reverse=True)
 
 # 素数リスト
 n = 100
