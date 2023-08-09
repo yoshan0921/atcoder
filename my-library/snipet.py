@@ -107,6 +107,6 @@ print(ans)
 
 # defaultdictの初期化
 # <list> or <dict> = collections.defaultdict(<型>)
-dict = collections.defaultdict(list)
+dict = collections.defaultdict(int)
 print(dict)
 print(type(dict))

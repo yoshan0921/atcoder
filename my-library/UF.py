@@ -56,7 +56,6 @@ if __name__ == "__main__":
     n = 5
     uf = UnionFind(n)
     uf.unite(1, 2)
-    uf.unite(2, 3)
-    uf.unite(0, 4)
+    uf.unite(4, 1)
     print(uf.group_count())
     print(uf.all_group_members())
