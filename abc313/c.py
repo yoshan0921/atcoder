@@ -14,15 +14,21 @@ num_sum = sum(A)
 
 quotient = num_sum // N
 reminder = num_sum % N
-# print(quotient)
-# print(reminder)
-A.sort(reverse=True)
-B = [quotient + reminder] * reminder + [quotient] * (N - reminder)
-print(A)
-print(B)
 
-gap = 0
-for a, b in zip(A, B):
-    gap += abs(a - b)
+operation = 0
 
-print(gap // 2)
+if reminder == 0:
+    for i in range(N):
+        if A[i] < quotient:
+            operation += quotient - A[i]
+else:
+    ope1 = 0
+    ope2 = 0
+    for i in range(N):
+        if A[i] < quotient:
+            ope1 += quotient - A[i]
+        elif A[i] > quotient + 1:
+            ope2 += A[i] - (quotient + 1)
+    operation = max(ope1, ope2)
+
+print(operation)
