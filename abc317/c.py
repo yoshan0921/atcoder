@@ -21,21 +21,28 @@ for _ in range(M):
     a, b, c = map(int, input().split())
     E[a][b] = c
     E[b][a] = c
-print(E)
+
+# for i in E:
+#     print(i)
 
 ans = 0
 visited = [False]*(N+1)
 
 
 def dfs(v, s):
+    # v = 現在の街
+    # s = 現在の街までの距離
     global ans
     visited[v] = True
-    
+
     if s > ans:
         ans = s
+
     for i in range(1, N+1):
+        # 未訪問且つ道がある場合
         if not visited[i] and E[v][i]:
             dfs(i, s+E[v][i])
+
     visited[v] = False
 
 

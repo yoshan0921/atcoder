@@ -141,22 +141,6 @@ print(dict[1])
 # print(ret6[0])
 # print(ret6[0][0])
 
-
-# # 素数リスト
-# n = 100
-# primes = set(range(2, n+1))
-# for i in range(2, int(n**0.5+1)):
-#     primes.difference_update(range(i*2, n+1, i))
-# primes = list(primes)
-# print(primes)
-
-# # 内包表記
-# a8 = [x for x in range(10)]
-# print(a8)
-# a8 = [[0] for x in range(10)]
-# print(a8)
-
-
 # # lambda式(1)
 # prices = [3000, 2500, 10500, 4300]
 # paymentList = list(map(lambda i: i*1.08, prices))
