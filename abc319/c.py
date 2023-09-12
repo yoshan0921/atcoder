@@ -36,6 +36,8 @@ def is_ok_tuple(tpl, perm):
     T = []
     for pos in tpl:
         i, j = divmod(pos, 3)
+        # permはマスにアクセスする順番
+        # c[i][j]はposの位置に書かれた数字
         T.append((perm[pos], c[i][j]))
     T.sort()
     return T[0][1] != T[1][1]
