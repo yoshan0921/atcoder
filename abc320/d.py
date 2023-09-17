@@ -33,7 +33,7 @@ for _ in range(M):
         G[a].append([b, x, y])
     if [a, -x, -y] not in G[b]:
         G[b].append([a, -x, -y])
-# print(G)
+print(G)
 
 INF = 10**9
 Person = [[INF, INF] for _ in range(N+1)]
