@@ -133,13 +133,55 @@ for a, b in test_data:
 print(dict)
 print(dict[1])
 
+# ==========================================================
+# 組み合わせ
 
-# # 組み合わせ
-# a6 = ['x1', 'x2', 'x3']
-# ret6 = list(itertools.combinations(a6, r=2))
-# print(ret6)
-# print(ret6[0])
-# print(ret6[0][0])
+print("\n組み合わせ")
+data = ['x1', 'x2', 'x3']
+data = list(itertools.combinations(data, r=2))
+print(data)
+
+data = ['x1', 'x2', 'x3']
+data = list(itertools.permutations(data, 2))
+print(data)
+
+# ==========================================================
+# 10→2進進変換
+
+print("\n10→2進進変換")
+bin_str = format(57, 'b')
+print(bin_str)
+
+# ==========================================================
+# 2進→10進変換
+
+print("\n2→10進進変換")
+bin_num = int('100010101', 2)
+print(bin_num)
+
+# ==========================================================
+# 文字列操作
+
+print("\n文字列の反転")
+s1 = 'ABCDE'
+s2 = s1[::-1]
+
+print(s1)  # => "ABCDE"
+print(s2)  # => "EDCBA"
+
+print("\n文字列のスライス（前から）")
+s1 = 'ABCDE'
+s2 = s1[:3]
+
+print(s1)  # => "ABCDE"
+print(s2)  # => "EDCBA"
+
+print("\n文字列のスライス（後から）")
+s1 = 'ABCDE'
+s2 = s1[-3:]
+
+print(s1)  # => "ABCDE"
+print(s2)  # => "EDCBA"
 
 # # lambda式(1)
 # prices = [3000, 2500, 10500, 4300]
