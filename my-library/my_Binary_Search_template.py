@@ -1,5 +1,5 @@
 """
-Binary Search（二分探索）
+Binary Search Template
 """
 
 import random
@@ -51,7 +51,7 @@ def isOK(data: list, mid: int, value: int):
     """
     mid(index)が条件を満たすかどうか
     """
-    if (data[mid] >= value):
+    if data[mid] >= value:
         return True
     else:
         return False

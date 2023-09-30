@@ -8,6 +8,7 @@ print("\n累積和")
 test_data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 result = itertools.accumulate(test_data)
 print(list(result))
+# [1, 3, 6, 10, 15, 21, 28, 36, 45, 55]
 
 # ==========================================================
 # 二分探索 - bisectモジュール
@@ -181,7 +182,7 @@ s1 = 'ABCDE'
 s2 = s1[-3:]
 
 print(s1)  # => "ABCDE"
-print(s2)  # => "EDCBA"
+print(s2)  # => "CDE"
 
 # # lambda式(1)
 # prices = [3000, 2500, 10500, 4300]

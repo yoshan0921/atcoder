@@ -1,7 +1,7 @@
 from collections import defaultdict
 
 
-class UnionFind_v1():
+class UnionFind_v1:
     def __init__(self, n):
         self.n = n
         self.parents = [-1] * n
@@ -49,10 +49,10 @@ class UnionFind_v1():
         return group_members
 
     def __str__(self):
-        return '\n'.join(f'{r}: {m}' for r, m in self.all_group_members().items())
+        return "\n".join(f"{r}: {m}" for r, m in self.all_group_members().items())
 
 
-class UnionFind_v2():
+class UnionFind_v2:
     # 初期化
     def __init__(self, n):
         self.par = [-1] * n
