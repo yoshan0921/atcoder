@@ -175,7 +175,7 @@ s1 = 'ABCDE'
 s2 = s1[:3]
 
 print(s1)  # => "ABCDE"
-print(s2)  # => "EDCBA"
+print(s2)  # => "ABC"
 
 print("\n文字列のスライス（後から）")
 s1 = 'ABCDE'
