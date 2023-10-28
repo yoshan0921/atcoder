@@ -142,6 +142,10 @@ data = ['x1', 'x2', 'x3']
 data = list(itertools.combinations(data, r=2))
 print(data)
 
+# ==========================================================
+# 順列
+
+print("\n順列")
 data = ['x1', 'x2', 'x3']
 data = list(itertools.permutations(data, 2))
 print(data)
