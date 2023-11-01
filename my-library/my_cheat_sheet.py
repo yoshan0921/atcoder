@@ -188,6 +188,18 @@ s2 = s1[-3:]
 print(s1)  # => "ABCDE"
 print(s2)  # => "CDE"
 
+# ==========================================================
+# 座標圧縮
+
+print("\n座標圧縮")
+A = [4, 90, 25, 30, 30, 8, 90, 90]
+S = sorted(list(set(A)))
+ranking = {x: i+1 for i, x in enumerate(S)}
+A_zaatsu = []
+for a in A:
+    A_zaatsu.append(ranking[a])
+print(A_zaatsu)  # [1, 5, 3, 4, 4, 2, 5, 5]
+
 # # lambda式(1)
 # prices = [3000, 2500, 10500, 4300]
 # paymentList = list(map(lambda i: i*1.08, prices))
