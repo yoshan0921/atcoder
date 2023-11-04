@@ -200,11 +200,15 @@ for a in A:
     A_zaatsu.append(ranking[a])
 print(A_zaatsu)  # [1, 5, 3, 4, 4, 2, 5, 5]
 
-# # lambda式(1)
-# prices = [3000, 2500, 10500, 4300]
-# paymentList = list(map(lambda i: i*1.08, prices))
-# print(paymentList)
+# ==========================================================
+# lambda式
+# lambda 引数:処理内容
 
-# # lambda式(2)
-# greeting = (lambda name: 'Hello ' + name)
-# print(greeting("Yosuke"))
+print("\nlambda式(1)")
+prices = [3000, 2500, 10500, 4300]
+paymentList = list(map(lambda i: i*1.08, prices))
+print(paymentList)
+
+print("\nlambda式(2)")
+greeting = (lambda name: 'Hello ' + name)
+print(greeting("Yosuke"))

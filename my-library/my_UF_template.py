@@ -55,8 +55,11 @@ class UnionFind_v1:
 class UnionFind_v2:
     # 初期化
     def __init__(self, n):
+        # 要素 x の親頂点の番号 (自身が根の場合は −1)
         self.par = [-1] * n
+        # 要素 x の属する根付き木の高さ
         self.rank = [0] * n
+        # 要素 x の属する根付き木に含まれる頂点数
         self.siz = [1] * n
 
     # 根を求める
@@ -94,7 +97,7 @@ class UnionFind_v2:
 
 if __name__ == "__main__":
     n = 5
-    uf = UnionFind(n)
+    uf = UnionFind_v2(n)
     uf.unite(1, 2)
     uf.unite(4, 1)
     print(uf.group_count())
