@@ -1,6 +1,16 @@
 import bisect
 import collections
 import itertools
+import numpy as np
+
+# ==========================================================
+# 配列の回転
+
+print("\n配列の回転")
+A = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+A_rot = np.rot90(A)
+print(A_rot)
+
 # ==========================================================
 # 累積和
 
@@ -155,7 +165,7 @@ print(data)
 
 print("\n10→2進進変換")
 bin_str = format(57, 'b')
-print(bin_str)
+print(bin_str.zfill(8))
 
 # ==========================================================
 # 2進→10進変換

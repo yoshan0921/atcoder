@@ -21,6 +21,7 @@ for i in range(1 << N):
     weight = 0
     value = 0
     for j in range(N):
+        # print(i & (1 << j))
         if i & (1 << j):
             weight += W[j]
             value += V[j]
