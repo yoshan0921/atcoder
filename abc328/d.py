@@ -20,6 +20,8 @@ for char in S:
     stack.append(char)
     if stack[-3:] == list('ABC'):
         # 高速化する上でここが重要だった。
-        del stack[-3:]
+        for _ in range(3):
+            stack.pop()
+        # del stack[-3:]
 
 print(''.join(stack))

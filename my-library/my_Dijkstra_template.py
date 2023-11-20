@@ -20,16 +20,17 @@ class edge:
 
 INF = 10**9  # 初期化で使う十分大きな数
 
-# main
-# 入力を受け取る
+# 入力
 N, M = map(int, input().split())
 G = [[] for _ in range(N)]
 for i in range(M):
     u, v, w = map(int, input().split())
     G[u].append(edge(v, w))
+    G[v].append(edge(u, w))
 
 # done[i]：頂点iの最短距離が確定しているかどうかを表すリスト
 done = [False for _ in range(N)]
+
 # dist[i]：頂点0から頂点iへの暫定的な経路長
 dist = [INF for _ in range(N)]
 dist[0] = 0
