@@ -17,7 +17,6 @@ print(A_rot)
 print("\n配列のコピー")
 
 
-
 # ==========================================================
 # 累積和
 
@@ -36,7 +35,7 @@ print(list(result))
 print("\n二分探索 - bisectモジュール ")
 test_data = [1, 2, 3, 4, 5, 5, 6, 7, 8, 9, 10]
 result1 = bisect.bisect_left(test_data, 5)
-result2 = bisect.bisect_right(test_data, 5)
+result2 = bisect.bisect_right(test_data, 10)
 print(result1)
 print(result2)
 
