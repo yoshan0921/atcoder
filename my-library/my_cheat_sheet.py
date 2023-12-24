@@ -1,5 +1,6 @@
 import bisect
 import collections
+import copy
 import itertools
 import numpy as np
 
@@ -15,7 +16,13 @@ print(A_rot)
 # 配列のコピー
 
 print("\n配列のコピー")
-
+l = [0, 1, [2, 3]]
+l_copy = l.copy()              # shallow copy
+l_deepcopy = copy.deepcopy(l)  # deep copy
+l[1] = 100
+l[2][0] = 200
+print(l_copy)
+print(l_deepcopy)
 
 # ==========================================================
 # 累積和
