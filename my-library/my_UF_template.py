@@ -71,7 +71,7 @@ class UnionFind_v2:
         if self.parent[x] == -1:
             return x  # x is the root
         else:
-            self.parent[x] = self.root(self.parent[x])  # routing compression
+            self.parent[x] = self.root(self.parent[x])  # Routing compression
             return self.parent[x]
 
     # Show all roots
@@ -95,7 +95,7 @@ class UnionFind_v2:
             rx, ry = ry, rx
         self.parent[ry] = rx
 
-        # If the height of the tree is the same, the depth increases by 1
+        # If the height of the tree is the same, the height increases by 1
         if self.rank[rx] == self.rank[ry]:
             self.rank[rx] += 1
 
@@ -113,16 +113,30 @@ class UnionFind_v2:
         root = self.root(x)
         return [i for i in range(len(self.size)) if self.root(i) == root]
 
+   # Find all members
+    def all_members(self):
+        group_members = defaultdict(list)
+        for member in range(len(self.size)):
+            group_members[self.root(member)].append(member)
+        return group_members
+
 
 if __name__ == "__main__":
-    n = 5
+    n = 10
     uf = UnionFind_v2(n)
-    uf.unite(1, 2)
-    uf.unite(4, 1)
     uf.unite(0, 1)
-    print(uf.root(2))
-    print(uf.issame(1, 3))
-    print(uf.group_size(1))
-    print(uf.roots())
-    print(uf.group_members(1))
-    print(uf.group_members(3))
+    print(f"Rank:{uf.rank}")
+    print(f"Parent:{uf.parent}")
+    print(uf.all_members())
+
+    uf.unite(1, 2)
+    print(f"Rank:{uf.rank}")
+    print(f"Parent:{uf.parent}")
+    print(uf.all_members())
+
+    uf.unite(2, 3)
+    uf.unite(4, 5)
+    uf.unite(5, 6)
+    uf.unite(6, 7)
+    uf.unite(7, 8)
+    uf.unite(8, 9)
