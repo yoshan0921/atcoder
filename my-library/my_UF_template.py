@@ -66,7 +66,7 @@ class UnionFind_v2:
         # Size (number of elements) of the group to which element x belongs
         self.size = [1] * n
 
-    # Seek root
+    # Find root
     def root(self, x):
         if self.parent[x] == -1:
             return x  # x is the root
@@ -108,6 +108,11 @@ class UnionFind_v2:
     def group_size(self, x):
         return self.size[self.root(x)]
 
+    # Find the members of the group containing x
+    def group_members(self, x):
+        root = self.root(x)
+        return [i for i in range(len(self.size)) if self.root(i) == root]
+
 
 if __name__ == "__main__":
     n = 5
@@ -119,3 +124,5 @@ if __name__ == "__main__":
     print(uf.issame(1, 3))
     print(uf.group_size(1))
     print(uf.roots())
+    print(uf.group_members(1))
+    print(uf.group_members(3))

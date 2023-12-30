@@ -93,6 +93,7 @@ if __name__ == "__main__":
                 red.append((i, j))
 
     # original number of connected cells groups
+    print(uf.roots())
     org_num = len(uf.roots())-len(red)
     # Expected number of connected cellsn when each ret cell is changed to green
     ans = []
