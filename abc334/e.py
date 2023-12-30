@@ -1,55 +1,18 @@
-from collections import defaultdict
+import io
+import sys
+import bisect
+import collections
+import itertools
+import math
+sys.setrecursionlimit(10**9)
 
-
-class UnionFind_v1:
-    def __init__(self, n):
-        self.n = n
-        self.parents = [-1] * n
-
-    def find(self, x):
-        if self.parents[x] < 0:
-            return x
-        else:
-            self.parents[x] = self.find(self.parents[x])
-            return self.parents[x]
-
-    def unite(self, x, y):
-        x = self.find(x)
-        y = self.find(y)
-
-        if x == y:
-            return
-
-        if self.parents[x] > self.parents[y]:
-            x, y = y, x
-
-        self.parents[x] += self.parents[y]
-        self.parents[y] = x
-
-    def size(self, x):
-        return -self.parents[self.find(x)]
-
-    def same(self, x, y):
-        return self.find(x) == self.find(y)
-
-    def members(self, x):
-        root = self.find(x)
-        return [i for i in range(self.n) if self.find(i) == root]
-
-    def roots(self):
-        return [i for i, x in enumerate(self.parents) if x < 0]
-
-    def group_count(self):
-        return len(self.roots())
-
-    def all_group_members(self):
-        group_members = defaultdict(list)
-        for member in range(self.n):
-            group_members[self.find(member)].append(member)
-        return group_members
-
-    def __str__(self):
-        return "\n".join(f"{r}: {m}" for r, m in self.all_group_members().items())
+_INPUT = """\
+3 4
+#...
+.#.#
+..##
+"""
+sys.stdin = io.StringIO(_INPUT)
 
 
 class UnionFind_v2:
@@ -110,12 +73,44 @@ class UnionFind_v2:
 
 
 if __name__ == "__main__":
-    n = 5
-    uf = UnionFind_v2(n)
-    uf.unite(1, 2)
-    uf.unite(4, 1)
-    uf.unite(0, 1)
-    print(uf.root(2))
-    print(uf.issame(1, 3))
-    print(uf.group_size(1))
-    print(uf.roots())
+    # Input
+    H, W = map(int, input().split())
+    S = [list(input()) for _ in range(H)]
+
+    uf = UnionFind_v2(H*W)
+    count = 0
+    red = []
+
+    for i in range(H):
+        for j in range(W):
+            if S[i][j] == "#":
+                for next_i, next_j in [(i+1, j), (i, j+1)]:
+                    if not (0 <= next_i < H and 0 <= next_j < W):
+                        continue
+                    if S[next_i][next_j] == "#":
+                        uf.unite(i*W+j, next_i*W+next_j)
+            else:
+                red.append((i, j))
+
+    # original number of connected cells groups
+    org_num = len(uf.roots())-len(red)
+    # Expected number of connected cellsn when each ret cell is changed to green
+    ans = []
+
+    dhs = [-1, 0, 1, 0]
+    dws = [0, -1, 0, 1]
+    for h, w in red:
+        check_group = set()
+        for dh, dw in zip(dhs, dws):
+            next_h, next_w = h + dh, w + dw
+            if not (0 <= next_h < H and 0 <= next_w < W):
+                continue
+            if S[next_h][next_w] == "#":
+                check_group.add(uf.root(next_h*W+next_w))
+        # print(check_group)
+        ans.append(org_num - len(check_group) + 1)
+
+    mod = 998244353
+    m = (sum(ans) * pow(len(ans), mod-2, mod)) % mod
+    # print(ans)
+    print(m)
